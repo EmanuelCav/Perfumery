@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Gender, Role } from "../../../enum/enum";
+import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn } from "typeorm";
 
 @Entity()
 export class User {
@@ -19,7 +20,7 @@ export class User {
         type: 'varchar'
     })
     surname: String
-    
+
     @Column({
         nullable: false,
         type: 'varchar',
@@ -40,28 +41,16 @@ export class User {
     })
     phone: String
 
-    @Column({
-        nullable: false,
-        type: 'datetime'
-    })
-    created_at: String
+    @CreateDateColumn()
+    created_At: Date;
 
-    @Column({
-        nullable: false,
-        type: 'int'
-    })
-    role: Number
+    @Column('int')
+    role: Role
 
-    @Column({
-        nullable: false,
-        type: 'date'
-    })
-    birthday: String
+    @CreateDateColumn()
+    birthday: Date;
 
-    @Column({
-        nullable: false,
-        type: 'int'
-    })
-    gender: Number
+    @Column('int')
+    gender: Gender
 
 }
